@@ -3,19 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/fragment_signing">
 
     <fragment
-        android:id="@+id/firstFragment"
+        android:id="@+id/fragment_signing"
         android:name="com.example.projetandroid.LoginFragment"
-        android:label="fragment_first"
-        tools:layout="@layout/fragment_login" />
+        android:label="fragment_signing"
+        tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_fragment_signing_to_fragment_signup"
+            app:destination="@id/fragment_signup" />
+        <action
+            android:id="@+id/action_fragment_signing_to_fragment_trending"
+            app:destination="@id/fragment_trending" />
+    </fragment>
 
     <fragment
-        android:id="@+id/secondFragment"
+        android:id="@+id/fragment_signup"
         android:name="com.example.projetandroid.SignupFragment"
-        android:label="fragment_first"
-        tools:layout="@layout/fragment_signup" />
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_fragment_signup_to_fragment_signing"
+            app:destination="@id/fragment_signing" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_trending"
+        android:name="com.example.projetandroid.Trending_Fragment"
+        android:label="fragment_trending"
+        tools:layout="@layout/fragment_trending" />
 
 
 </navigation>

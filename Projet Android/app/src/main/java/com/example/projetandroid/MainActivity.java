@@ -11,14 +11,21 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navView;
+    public static ArrayList<Logs> logs = new ArrayList<Logs>();
+    public static boolean Connected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //initializeBottomNavigationView();
     }
 
