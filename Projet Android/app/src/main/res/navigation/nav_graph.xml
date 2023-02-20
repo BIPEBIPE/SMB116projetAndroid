@@ -33,7 +33,17 @@
         android:id="@+id/fragment_trending"
         android:name="com.example.projetandroid.Trending_Fragment"
         android:label="fragment_trending"
-        tools:layout="@layout/fragment_trending" />
+        tools:layout="@layout/fragment_trending" >
+        <action
+            android:id="@+id/action_fragment_trending_to_fragment_detail_movie"
+            app:destination="@id/fragment_detail_movie" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_detail_movie"
+        android:name="com.example.projetandroid.DetailMovieFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_detail_movie" />
 
 
 </navigation>

@@ -10,7 +10,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MovieRepository {
-    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private final MovieDAO movieDAO;
 
     public MovieRepository(Context c) {
@@ -26,7 +25,4 @@ public class MovieRepository {
         return this.movieDAO.getAllMovies();
     }
 
-    interface OnQueryCompletedListener {
-        void onQueryComplete();
-    }
 }

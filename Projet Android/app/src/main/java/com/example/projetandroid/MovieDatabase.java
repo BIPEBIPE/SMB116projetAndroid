@@ -16,6 +16,7 @@ public abstract class MovieDatabase extends RoomDatabase {
             synchronized (MovieDatabase.class) {
                 INSTANCE = Room.databaseBuilder(context.getApplicationContext(),MovieDatabase.class, "movie_database")
                         .fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
                         .build();
             }
         }

@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Trending_Fragment">
+    tools:context=".DetailMovieFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Trending_Fragment">
+        tools:context=".DetailMovieFragment">
 
         <LinearLayout
             android:id="@+id/LL1"
@@ -27,44 +27,22 @@
                 android:id="@+id/header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trending"
+                android:text="Details/titre"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="70px"/>
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/LL2"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:layout_margin="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/LL1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
 
-            <EditText
-                android:id="@+id/plain_text_input"
-                android:layout_height="50dp"
-                android:layout_width="250dp"
-                android:inputType="text"
-                android:text="Search"
-                android:textColor="@color/white"
-                android:background="#a2d2ff"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_trending"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/LL2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            android:src="@drawable/add_button"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

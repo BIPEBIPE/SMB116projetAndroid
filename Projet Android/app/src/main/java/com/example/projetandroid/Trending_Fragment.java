@@ -4,6 +4,10 @@ import android.app.Application;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,7 +45,18 @@ public class Trending_Fragment extends Fragment {
         movieRepository.addMovie(new Movie("Asterix et Obélix"));
         movieRepository.addMovie(new Movie("OSS 117"));
         List<Movie> movies= movieRepository.getAllMovies();
-        Log.e("error",movies.get(0)+" / "+movies.get(1));
+
+        RecyclerView recyclerView = v.findViewById(R.id.recyclerview_trending);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        MovieAdapter adapter = new MovieAdapter(movies,Movie->{
+            NavController navController= Navigation.findNavController(v);
+            navController.navigate(R.id.action_fragment_trending_to_fragment_detail_movie);
+        });
+        recyclerView.setAdapter(adapter);
+
+        for(int i=0;i<movies.size();i++){
+            Log.e("error",movies.get(i).titre);
+        }
 
         return v;
     }
