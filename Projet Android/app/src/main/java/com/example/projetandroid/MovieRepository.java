@@ -21,6 +21,8 @@ public class MovieRepository {
         this.movieDAO.insert(movie);
     }
 
+    public void deleteAll(){this.movieDAO.deleteAll();}
+
     public List<Movie> getAllMovies(){
         return this.movieDAO.getAllMovies();
     }

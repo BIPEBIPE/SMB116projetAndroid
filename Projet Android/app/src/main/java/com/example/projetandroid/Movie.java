@@ -18,6 +18,10 @@ public class Movie {
     @ColumnInfo(name = "image")
     String img;
 
+    public int getId() {
+        return id;
+    }
+
     public Movie(String titre) {
         this.titre = titre;
     }

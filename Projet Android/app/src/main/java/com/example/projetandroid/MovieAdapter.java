@@ -22,10 +22,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View itemView = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.movie_item, parent, false);
-            return new MovieViewHolder(itemView);
-        }
+            LayoutInflater  inflater  = LayoutInflater.from(parent.getContext());
+            View contactView = inflater.inflate(R.layout.movie_item, parent, false);
+            MovieViewHolder viewHolder = new MovieViewHolder(contactView);
+            return viewHolder;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
@@ -45,7 +46,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         TextView wordTextView;
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
-            wordTextView = itemView.findViewById(R.id.word_textview);
+            wordTextView = (TextView) itemView.findViewById(R.id.word_textview);
         }
 
         public void bind(String data) {

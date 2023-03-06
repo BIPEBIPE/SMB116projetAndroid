@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class WatchListFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
-    public WatchListFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
-    public static WatchListFragment newInstance() {
-        WatchListFragment fragment = new WatchListFragment();
+    public static ProfileFragment newInstance() {
+        ProfileFragment fragment = new ProfileFragment();
         return fragment;
     }
 
@@ -28,6 +28,6 @@ public class WatchListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_watchlist, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }

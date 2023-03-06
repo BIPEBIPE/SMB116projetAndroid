@@ -43,7 +43,26 @@
         android:id="@+id/fragment_detail_movie"
         android:name="com.example.projetandroid.DetailMovieFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_detail_movie" />
+        tools:layout="@layout/fragment_detail_movie" >
+        <argument
+            android:name="titreMovie"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_watchlist"
+        android:name="com.example.projetandroid.WatchListFragment"
+        android:label="fragment_watchlist"
+        tools:layout="@layout/fragment_watchlist" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.example.projetandroid.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+    </fragment>
 
 
 </navigation>

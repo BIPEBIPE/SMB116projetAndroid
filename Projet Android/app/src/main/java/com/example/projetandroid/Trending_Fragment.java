@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,24 +42,43 @@ public class Trending_Fragment extends Fragment {
         View v=inflater.inflate(R.layout.fragment_trending, container, false);
 
         MovieRepository movieRepository =new MovieRepository(getContext());
-        movieRepository.addMovie(new Movie("Avatar the way of water"));
-        movieRepository.addMovie(new Movie("Babylon"));
-        movieRepository.addMovie(new Movie("Asterix et Obélix"));
-        movieRepository.addMovie(new Movie("OSS 117"));
+        movieRepository.deleteAll();
         List<Movie> movies= movieRepository.getAllMovies();
+        if(!ExisteMovie(movies,"Avatar the way of water")){
+            movieRepository.addMovie(new Movie("Avatar the way of water"));
+        }
+        if(!ExisteMovie(movies,"Babylon")){
+            movieRepository.addMovie(new Movie("Babylon"));
+        }
+        if(!ExisteMovie(movies,"Asterix et Obélix")){
+            movieRepository.addMovie(new Movie("Asterix et Obélix"));
+        }
+        if(!ExisteMovie(movies,"OSS 117")){
+            movieRepository.addMovie(new Movie("OSS 117"));
+        }
+        movies= movieRepository.getAllMovies();
 
         RecyclerView recyclerView = v.findViewById(R.id.recyclerview_trending);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         MovieAdapter adapter = new MovieAdapter(movies,Movie->{
             NavController navController= Navigation.findNavController(v);
-            navController.navigate(R.id.action_fragment_trending_to_fragment_detail_movie);
+            Bundle bundle = new Bundle();
+            bundle.putString("titreMovie", Movie);
+            navController.navigate(R.id.action_fragment_trending_to_fragment_detail_movie,bundle);
         });
-        recyclerView.setAdapter(adapter);
 
-        for(int i=0;i<movies.size();i++){
-            Log.e("error",movies.get(i).titre);
-        }
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return v;
+    }
+
+    private boolean ExisteMovie(List<Movie> list,String titre ){
+        boolean exist=false;
+        for (Movie a: list) {
+            if(a.titre==titre){
+                exist=true;
+            }
+        }
+        return exist;
     }
 }

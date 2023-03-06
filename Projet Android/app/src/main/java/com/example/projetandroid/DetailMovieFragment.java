@@ -7,12 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class DetailMovieFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-
-    private String mParam1;
+    private String Titre;
 
     public DetailMovieFragment() {
         // Required empty public constructor
@@ -20,9 +19,9 @@ public class DetailMovieFragment extends Fragment {
 
     public static DetailMovieFragment newInstance(String param1) {
         DetailMovieFragment fragment = new DetailMovieFragment();
-        Bundle args = new Bundle();
+        /*Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        fragment.setArguments(args);
+        fragment.setArguments(args);*/
         return fragment;
     }
 
@@ -30,14 +29,17 @@ public class DetailMovieFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            Titre = getArguments().getString("titreMovie");
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_movie, container, false);
+
+        View v=inflater.inflate(R.layout.fragment_detail_movie, container, false);
+        TextView tv = v.findViewById(R.id.header);
+        tv.setText(Titre);
+        return v;
     }
 }
