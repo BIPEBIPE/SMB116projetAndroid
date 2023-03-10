@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class SignupFragment extends Fragment {
     DatePickerDialog picker;
@@ -72,13 +73,18 @@ public class SignupFragment extends Fragment {
                 TextView log = (TextView) view.findViewById(R.id.plain_text_inputLogin);
                 TextView mdp = (TextView) view.findViewById(R.id.plain_text_inputMdp);
                 TextView mdp2 = (TextView) view.findViewById(R.id.plain_text_inputMdp2);
+                long birthdate = 0;//******************TODO birthdate
 
                 if(mdp.getText().toString().equals(mdp2.getText().toString())){
-                    Log.e("Error",log.getText().toString()+" / "+mdp.getText().toString());
-                    MainActivity.logs.add(new Logs(log.getText().toString(),mdp.getText().toString()));
-                    Toast.makeText(getContext(),"Identifiants créés",Toast.LENGTH_SHORT).show();
-                    NavController navController= Navigation.findNavController(view);
-                    navController.navigate(R.id.action_fragment_signup_to_fragment_signing);
+                    UserRepository userRepository =new UserRepository(getContext());
+                    if(ExisteLogin(log.getText().toString(),userRepository)){
+                        Toast.makeText(getContext(),"Ce login existe déjà",Toast.LENGTH_SHORT).show();
+                    }else{
+                        userRepository.addUser(new User(log.getText().toString(),mdp.getText().toString()));
+                        Toast.makeText(getContext(),"Identifiants créés",Toast.LENGTH_SHORT).show();
+                        NavController navController= Navigation.findNavController(view);
+                        navController.navigate(R.id.action_fragment_signup_to_fragment_signing);
+                    }
                 }
                 else{
                     Toast.makeText(getContext(),"Les deux mots de passe ne sont pas identiques",Toast.LENGTH_SHORT).show();
@@ -87,6 +93,17 @@ public class SignupFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private boolean ExisteLogin(String login,UserRepository userRepository){
+        boolean res= false;
+        List<User> users= userRepository.getAllUsers();
+        for (User u:users) {
+            if(u.login.toString().equals(login.toString())){
+                res=true;
+            }
+        }
+        return res;
     }
 
 }

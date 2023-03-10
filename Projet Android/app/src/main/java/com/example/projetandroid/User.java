@@ -13,15 +13,14 @@ public class User {
     @ColumnInfo(name = "pwd")
     String pwd;
     @ColumnInfo(name = "birthdate")
-    long BirthDate;
+    long birthDate;
 
-    public User(String login,String pwd,long birthdate) {
+    public User(String login,String pwd) {
         this.login=login;
         this.pwd=pwd;
-        this.BirthDate=birthdate;
     }
 
-    public int getId() {
+    public int getUserId() {
         return id;
     }
 
@@ -34,7 +33,10 @@ public class User {
     }
 
     public long getBirthDate() {
-        return BirthDate;
+        return birthDate;
     }
 
+    public void setBirthDate(long birthDate) {
+        this.birthDate = birthDate;
+    }
 }

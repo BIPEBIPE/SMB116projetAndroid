@@ -18,7 +18,7 @@ public class Movie {
     @ColumnInfo(name = "image")
     String img;
 
-    public int getId() {
+    public int getMovieId() {
         return id;
     }
 

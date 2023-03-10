@@ -18,8 +18,8 @@ import java.util.Enumeration;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navView;
-    public static ArrayList<Logs> logs = new ArrayList<Logs>();
     public static boolean Connected = false;
+    public static String Login ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

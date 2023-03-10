@@ -42,7 +42,6 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         TextView text = (TextView) view.findViewById(R.id.signup);
         Button btnLog = (Button) view.findViewById(R.id.btnLog);
-        MainActivity.logs.add(new Logs("l","m"));
 
         text.setOnClickListener(new View.OnClickListener()
         {
@@ -51,7 +50,6 @@ public class LoginFragment extends Fragment {
             {
                 NavController navController=Navigation.findNavController(view);
                 navController.navigate(R.id.action_fragment_signing_to_fragment_signup);
-               // MainActivity.logs.add(new Logs());
             }
         });
 
@@ -65,17 +63,14 @@ public class LoginFragment extends Fragment {
 
                 Log.e("Error",log.getText().toString()+" // "+mdp.getText().toString());
 
-                for (Logs a:MainActivity.logs) {
-                    Log.e("Error",a.Login+" / "+a.Password);
-                    if(a.Login.equals(log.getText().toString()) && a.Password.equals(mdp.getText().toString())){
-                        MainActivity.Connected=true;
-                    }
-                }
-                if(MainActivity.Connected){
+                UserRepository userRepository =new UserRepository(getContext());
+                User u=userRepository.Connexion(log.getText().toString(),mdp.getText().toString());
+                if(u !=null && u.login!=""){
+                    MainActivity.Connected=true;
+                    MainActivity.Login=u.login;
                     NavController navController=Navigation.findNavController(view);
                     navController.navigate(R.id.action_fragment_signing_to_fragment_trending);
-                }
-                else {
+                }else{
                     Toast.makeText(getContext(),"Identifiants incorrects",Toast.LENGTH_SHORT).show();
                 }
             }
