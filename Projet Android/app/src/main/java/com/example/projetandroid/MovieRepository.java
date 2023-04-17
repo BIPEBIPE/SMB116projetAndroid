@@ -3,7 +3,7 @@ package com.example.projetandroid;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.room.Room;
+//import androidx.room.Room;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

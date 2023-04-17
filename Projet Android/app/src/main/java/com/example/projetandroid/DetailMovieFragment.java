@@ -29,7 +29,7 @@ public class DetailMovieFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            Titre = getArguments().getString("titreMovie");
+            Titre = getArguments().getString("id");
         }
     }
 

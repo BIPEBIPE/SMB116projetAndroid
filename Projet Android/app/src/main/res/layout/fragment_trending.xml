@@ -43,19 +43,6 @@
             app:layout_constraintTop_toBottomOf="@+id/LL1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
-
-            <EditText
-                android:id="@+id/plain_text_input"
-                android:layout_height="50dp"
-                android:layout_width="250dp"
-                android:inputType="text"
-                android:text="Search"
-                android:textColor="@color/white"
-                android:background="#a2d2ff"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView

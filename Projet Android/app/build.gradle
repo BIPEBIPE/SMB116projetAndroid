@@ -5,7 +5,6 @@ plugins {
 android {
     namespace 'com.example.projetandroid'
     compileSdk 32
-
     defaultConfig {
         applicationId "com.example.projetandroid"
         minSdk 24
@@ -46,5 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
-
+    implementation group: 'cz.msebera.android' , name: 'httpclient', version: '4.5.3'
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.squareup.picasso:picasso:2.3.3'
 }
