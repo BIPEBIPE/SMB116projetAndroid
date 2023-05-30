@@ -69,5 +69,16 @@ public class MovieAPI {
         Note = note;
     }
 
+    @Override
+    public String toString() {
+        return "MovieAPI{" +
+                "Id='" + Id + '\'' +
+                ", titre='" + titre + '\'' +
+                ", ReleaseDate='" + ReleaseDate + '\'' +
+                ", Desciption='" + Desciption + '\'' +
+                ", Logo='" + Logo + '\'' +
+                ", Note='" + Note + '\'' +
+                '}';
+    }
 }
 

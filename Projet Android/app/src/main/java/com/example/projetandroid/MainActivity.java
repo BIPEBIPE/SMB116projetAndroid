@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initializeBottomNavigationView();
     }
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = this.getMenuInflater();
-        inflater.inflate(R.menu.bottom_menu,menu);
+        //inflater.inflate(R.menu.bottom_menu,menu);
         //Toast.makeText(getApplicationContext(),"onCreateOptionsMenu",Toast.LENGTH_SHORT).show();
         return true;
     }

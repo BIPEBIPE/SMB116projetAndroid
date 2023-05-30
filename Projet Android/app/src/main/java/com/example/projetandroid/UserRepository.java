@@ -27,4 +27,12 @@ public class UserRepository {
     public List<User> getAllUsers(){
         return this.userDAO.getAllUser();
     }
+
+    public void ChangeMDP(String login, String pwd){
+        this.userDAO.ChangeMDP(login,pwd);
+    }
+
+    public void ChangePP(String login, byte[] img_profile){
+        this.userDAO.ChangePP(login,img_profile);
+    }
 }

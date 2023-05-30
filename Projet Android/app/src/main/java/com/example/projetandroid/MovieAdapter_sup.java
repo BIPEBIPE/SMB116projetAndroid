@@ -1,9 +1,5 @@
 package com.example.projetandroid;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -26,38 +20,32 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder>{
+public class MovieAdapter_sup extends RecyclerView.Adapter<MovieAdapter_sup.MovieViewHolder>{
     List<MovieAPI> movieList;
     MovieListener movieListener;
 
-    public MovieAdapter(List<MovieAPI> movies, MovieListener listener) {
+    public MovieAdapter_sup(List<MovieAPI> movies, MovieListener listener) {
         this.movieList = movies;
         this.movieListener = listener;
     }
 
     @NonNull
     @Override
-    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater  inflater  = LayoutInflater.from(parent.getContext());
-            View contactView = inflater.inflate(R.layout.movie_item, parent, false);
-            //movie_item_sup
-            MovieViewHolder viewHolder = new MovieViewHolder(contactView);
-            return viewHolder;
+    public MovieAdapter_sup.MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
+        View contactView = inflater.inflate(R.layout.movie_item_sup, parent, false);
+        //movie_item_sup
+        MovieAdapter_sup.MovieViewHolder viewHolder = new MovieAdapter_sup.MovieViewHolder(contactView);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MovieAdapter_sup.MovieViewHolder holder, int position) {
         // Retrieve the correct data for that position
         MovieAPI data = movieList.get(position);
         // Add the data to the view
@@ -74,13 +62,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         TextView wordTextView;
         TextView titreTextView;
         ImageView affiche;
-        Button delete;
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
             wordTextView = (TextView) itemView.findViewById(R.id.word_textview);
             titreTextView = (TextView) itemView.findViewById(R.id.titre);
             affiche = (ImageView) itemView.findViewById(R.id.affiche);
-            delete = (Button) itemView.findViewById(R.id.delete);
         }
 
         public void bind(String id) {
@@ -112,18 +98,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             titreTextView.setOnClickListener((view) -> movieListener.onWordSelected(id));
             affiche.setOnClickListener((view) -> movieListener.onWordSelected(id));
-            delete.setOnClickListener((view)-> {
-                MovieRepository mr = new MovieRepository(view.getContext());
-                mr.Delete(id);
-                List<MovieAPI> movieList2=movieList;
-                for(int i=0; i<movieList.size();i++){
-                    if(movieList.get(i).getId()==id){
-                        movieList2.remove(i);
-                    }
-                }
-                movieList=movieList2;
-                notifyDataSetChanged();
-            });
         }
     }
 }

@@ -34,26 +34,16 @@
         app:layout_constraintRight_toRightOf="parent"
         android:contentDescription="affiche_film"
         />
+
     <TextView
         android:id="@+id/titre"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:lines="2"
         android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@+id/affiche"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/affiche"
         android:padding="5dp"
-        android:textSize="50px"
-        />
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="X"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/titre"
-        app:layout_constraintLeft_toRightOf="@+id/affiche"
-        />
+        android:textSize="50px" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_fragment_trending_to_fragment_detail_movie"
             app:destination="@id/fragment_detail_movie" />
+        <action
+            android:id="@+id/action_fragment_trending_to_fragment_signing"
+            app:destination="@id/fragment_signing" />
     </fragment>
 
     <fragment
@@ -48,6 +51,23 @@
             android:name="titreMovie"
             app:argType="string"
             android:defaultValue="" />
+        <action
+            android:id="@+id/action_fragment_detail_movie_to_fragment_trending"
+            app:destination="@id/fragment_trending" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_detailwatchlist_movie"
+        android:name="com.example.projetandroid.DetailMovieWatchlistFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_detail_movie_watchlist" >
+        <argument
+            android:name="titreMovie"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/action_fragment_detailwatchlist_movie_to_fragment_watchlist"
+            app:destination="@id/fragment_watchlist" />
     </fragment>
 
     <fragment
@@ -55,6 +75,12 @@
         android:name="com.example.projetandroid.WatchListFragment"
         android:label="fragment_watchlist"
         tools:layout="@layout/fragment_watchlist" >
+        <action
+            android:id="@+id/action_fragment_watchlist_to_fragment_signing"
+            app:destination="@id/fragment_signing" />
+        <action
+            android:id="@+id/action_fragment_watchlist_to_fragment_detailwatchlist_movie"
+            app:destination="@id/fragment_detailwatchlist_movie" />
     </fragment>
 
     <fragment
@@ -62,6 +88,9 @@
         android:name="com.example.projetandroid.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_fragment_profile_to_fragment_signing"
+            app:destination="@id/fragment_signing" />
     </fragment>
 
 

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".Trending_Fragment">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/LL1"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
@@ -25,13 +25,25 @@
 
             <TextView
                 android:id="@+id/header"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Trending"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="70px"/>
-        </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/button_disconnect"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/power"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/LL2"
@@ -47,11 +59,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_trending"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/LL2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/LL2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

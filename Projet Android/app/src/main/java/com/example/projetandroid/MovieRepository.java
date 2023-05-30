@@ -21,10 +21,18 @@ public class MovieRepository {
         this.movieDAO.insert(movie);
     }
 
+    public void Delete(String movie_id){
+        this.movieDAO.Delete(movie_id);
+    }
+
     public void deleteAll(){this.movieDAO.deleteAll();}
 
     public List<Movie> getAllMovies(){
         return this.movieDAO.getAllMovies();
+    }
+
+    public List<Movie> getAllMoviesbyLogin(String login){
+        return this.movieDAO.getAllMoviesbyLogin(login);
     }
 
 }

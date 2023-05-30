@@ -1,5 +1,7 @@
 package com.example.projetandroid;
 
+import android.graphics.Bitmap;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -14,6 +16,8 @@ public class User {
     String pwd;
     @ColumnInfo(name = "birthdate")
     long birthDate;
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    byte[] img_profile;
 
     public User(String login,String pwd) {
         this.login=login;
@@ -38,5 +42,13 @@ public class User {
 
     public void setBirthDate(long birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public byte[] getImg_profile() {
+        return img_profile;
+    }
+
+    public void setImg_profile(byte[] img_profile) {
+        this.img_profile = img_profile;
     }
 }

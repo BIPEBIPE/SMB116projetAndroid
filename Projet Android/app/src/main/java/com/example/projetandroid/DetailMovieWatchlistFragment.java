@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,17 +29,17 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class DetailMovieFragment extends Fragment {
+public class DetailMovieWatchlistFragment extends Fragment {
 
     private String Titre;
     private String Id;
 
-    public DetailMovieFragment() {
+    public DetailMovieWatchlistFragment() {
         // Required empty public constructor
     }
 
-    public static DetailMovieFragment newInstance(String param1) {
-        DetailMovieFragment fragment = new DetailMovieFragment();
+    public static DetailMovieWatchlistFragment newInstance(String param1, String param2) {
+        DetailMovieWatchlistFragment fragment = new DetailMovieWatchlistFragment();
         return fragment;
     }
 
@@ -97,36 +96,12 @@ public class DetailMovieFragment extends Fragment {
             queue.add(stringRequest);
         }
 
-        FloatingActionButton button = (FloatingActionButton) v.findViewById(R.id.add_btn);
-        button.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Movie m = new Movie(Titre);
-                m.setMovie_id(Id);
-                m.setLogin(MainActivity.Login);
-                MovieRepository mr = new MovieRepository(getContext());
-                List<Movie> lm = mr.getAllMoviesbyLogin(MainActivity.Login);
-                Boolean test=false;
-                for (Movie movie: lm ) {
-                    if(movie.getMovie_id()==Id){
-                        test=true;
-                    }
-                }
-                if(test){
-                    Toast.makeText(getContext(),"Ce film est déjà présent dans votre Watchlist",Toast.LENGTH_SHORT).show();
-                }else{
-                    mr.addMovie(m);
-                    Toast.makeText(getContext(),"Film ajouté à votre Watchlist",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
         ImageButton Imgbutton = (ImageButton) v.findViewById(R.id.button_back);
         Imgbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavController navController= Navigation.findNavController(v);
-                navController.navigate(R.id.action_fragment_detail_movie_to_fragment_trending);
+                navController.navigate(R.id.action_fragment_detailwatchlist_movie_to_fragment_watchlist);
             }
         });
 

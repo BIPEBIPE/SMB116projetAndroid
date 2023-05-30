@@ -19,4 +19,10 @@ public interface UserDao {
 
     @Query("SELECT * from user where login = :login and pwd = :pwd")
     User Connexion(String login, String pwd);
+
+    @Query("UPDATE user SET pwd= :pwd where login = :login ")
+    void ChangeMDP(String login, String pwd);
+
+    @Query("UPDATE user SET img_profile= :img_profile where login = :login ")
+    void ChangePP(String login, byte[] img_profile);
 }

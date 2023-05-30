@@ -17,6 +17,10 @@ public class Movie {
     long date;
     @ColumnInfo(name = "image")
     String img;
+    @ColumnInfo(name = "movie_id")
+    String movie_id;
+    @ColumnInfo(name = "login")
+    String login;
 
     public int getMovieId() {
         return id;
@@ -48,5 +52,21 @@ public class Movie {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(String movie_id) {
+        this.movie_id = movie_id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

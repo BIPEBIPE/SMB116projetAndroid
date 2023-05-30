@@ -44,7 +44,7 @@ public class SignupFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
         EditText eText=(EditText) view.findViewById(R.id.editText1);
-        /*eText.setInputType(InputType.TYPE_NULL);
+        eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +62,7 @@ public class SignupFragment extends Fragment {
                         }, year, month, day);
                 picker.show();
             }
-        });*/
+        });
 
         Button btnLog=(Button) view.findViewById(R.id.btnInscription);
         btnLog.setOnClickListener(new View.OnClickListener()
@@ -73,6 +73,8 @@ public class SignupFragment extends Fragment {
                 TextView log = (TextView) view.findViewById(R.id.plain_text_inputLogin);
                 TextView mdp = (TextView) view.findViewById(R.id.plain_text_inputMdp);
                 TextView mdp2 = (TextView) view.findViewById(R.id.plain_text_inputMdp2);
+                EditText eText=(EditText) view.findViewById(R.id.editText1);
+                Log.e(eText.getText().toString(),"e");
                 long birthdate = 0;//******************TODO birthdate
 
                 if(mdp.getText().toString().equals(mdp2.getText().toString())){
