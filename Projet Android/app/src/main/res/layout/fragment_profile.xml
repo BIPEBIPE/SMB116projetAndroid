@@ -85,16 +85,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="70px"/>
 
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+        />
+
         <EditText
             android:id="@+id/new_mdp"
             android:layout_height="50dp"
             android:layout_width="250dp"
             android:inputType="text"
             android:hint="Nouveau mot de passe"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/black"
             android:background="#f5f5f5"
-            app:layout_constraintTop_toBottomOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/birthday"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

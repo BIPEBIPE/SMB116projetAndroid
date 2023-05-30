@@ -108,7 +108,7 @@ public class DetailMovieFragment extends Fragment {
                 List<Movie> lm = mr.getAllMoviesbyLogin(MainActivity.Login);
                 Boolean test=false;
                 for (Movie movie: lm ) {
-                    if(movie.getMovie_id()==Id){
+                    if(movie.getMovie_id().equals(Id)){
                         test=true;
                     }
                 }

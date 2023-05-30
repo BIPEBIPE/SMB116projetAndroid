@@ -74,18 +74,22 @@ public class SignupFragment extends Fragment {
                 TextView mdp = (TextView) view.findViewById(R.id.plain_text_inputMdp);
                 TextView mdp2 = (TextView) view.findViewById(R.id.plain_text_inputMdp2);
                 EditText eText=(EditText) view.findViewById(R.id.editText1);
-                Log.e(eText.getText().toString(),"e");
-                long birthdate = 0;//******************TODO birthdate
 
                 if(mdp.getText().toString().equals(mdp2.getText().toString())){
-                    UserRepository userRepository =new UserRepository(getContext());
-                    if(ExisteLogin(log.getText().toString(),userRepository)){
-                        Toast.makeText(getContext(),"Ce login existe déjà",Toast.LENGTH_SHORT).show();
+                    if(eText.getText().toString().equals("")){
+                        Toast.makeText(getContext(),"aucune date de naissance renseignée",Toast.LENGTH_SHORT).show();
                     }else{
-                        userRepository.addUser(new User(log.getText().toString(),mdp.getText().toString()));
-                        Toast.makeText(getContext(),"Identifiants créés",Toast.LENGTH_SHORT).show();
-                        NavController navController= Navigation.findNavController(view);
-                        navController.navigate(R.id.action_fragment_signup_to_fragment_signing);
+                        UserRepository userRepository =new UserRepository(getContext());
+                        if(ExisteLogin(log.getText().toString(),userRepository)){
+                            Toast.makeText(getContext(),"Ce login existe déjà",Toast.LENGTH_SHORT).show();
+                        }else{
+                            User u = new User(log.getText().toString(),mdp.getText().toString());
+                            u.setBirthDate(eText.getText().toString());
+                            userRepository.addUser(u);
+                            Toast.makeText(getContext(),"Identifiants créés",Toast.LENGTH_SHORT).show();
+                            NavController navController= Navigation.findNavController(view);
+                            navController.navigate(R.id.action_fragment_signup_to_fragment_signing);
+                        }
                     }
                 }
                 else{

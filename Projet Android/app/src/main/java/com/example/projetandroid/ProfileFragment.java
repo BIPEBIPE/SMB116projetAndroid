@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -66,12 +67,13 @@ public class ProfileFragment extends Fragment {
         Button button = (Button) v.findViewById(R.id.btnSave);
         img = (ImageView) v.findViewById(R.id.profile_picture);
         TextView takePhoto = (TextView) v.findViewById(R.id.photo);
+        TextView birthday = (TextView) v.findViewById(R.id.birthday);
         TextView getImage = (TextView) v.findViewById(R.id.image);
         TextView newMdp = (TextView) v.findViewById(R.id.new_mdp);
         UserRepository userRepository =new UserRepository(getContext());
         User u=userRepository.getUser(MainActivity.Login);
+        birthday.setText("date de naissance: "+u.getBirthDate());
         if(u.getImg_profile()!=null){
-            //Picasso.with(v.getContext()).load(u.getImg_profile()).into(img);
             Bitmap imgBtn= BitmapFactory.decodeByteArray(u.getImg_profile(), 0, u.getImg_profile().length);
             img.setImageBitmap(imgBtn);
         }
@@ -94,19 +96,22 @@ public class ProfileFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 UserRepository userRepository =new UserRepository(getContext());
-                if(imgFile!=null){
+                if(imgFile!=null) {
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     imgFile.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     byte[] byteArray = stream.toByteArray();
                     userRepository.ChangePP(MainActivity.Login,byteArray);
                 }
-                if(newMdp.getText()!=null){
-                    if(newMdp.getText().toString()!=""){
+                if(newMdp.getText().equals(null)) {
+                }else{
+                    if(newMdp.getText().toString().equals("")) {
+                        Toast.makeText(getContext(),"mise à jour de votre profil réussie",Toast.LENGTH_SHORT).show();
+                    }else{
                         userRepository.ChangeMDP(MainActivity.Login,newMdp.getText().toString());
+                        NavController navController= Navigation.findNavController(v);
+                        navController.navigate(R.id.action_fragment_profile_to_fragment_signing);
                     }
                 }
-                NavController navController= Navigation.findNavController(v);
-                navController.navigate(R.id.action_fragment_profile_to_fragment_signing);
             }
         });
 

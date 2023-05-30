@@ -15,7 +15,7 @@ public class User {
     @ColumnInfo(name = "pwd")
     String pwd;
     @ColumnInfo(name = "birthdate")
-    long birthDate;
+    String birthDate;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     byte[] img_profile;
 
@@ -36,11 +36,11 @@ public class User {
         return pwd;
     }
 
-    public long getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(long birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
