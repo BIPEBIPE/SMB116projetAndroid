@@ -71,6 +71,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+        <TextView
+            android:id="@+id/textbirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="date de naissance:"
+            android:minHeight="48dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@+id/editText1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plain_text_inputMdp2"
+            android:textSize="40px"/>
+
         <EditText
             android:id="@+id/editText1"
             android:layout_width="wrap_content"
@@ -78,7 +90,7 @@
             android:hint="Enter Date"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textbirthday"
             app:layout_constraintTop_toBottomOf="@+id/plain_text_inputMdp2" />
 
         <Button
