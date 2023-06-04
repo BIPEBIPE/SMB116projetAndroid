@@ -50,6 +50,14 @@
                 android:textColor="@color/white"
                 android:textSize="70px"/>
 
+            <ImageButton
+                android:id="@+id/button_share"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/share"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
@@ -96,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp"
             android:src="@drawable/add_button"/>

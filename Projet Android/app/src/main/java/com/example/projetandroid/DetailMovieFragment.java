@@ -1,5 +1,6 @@
 package com.example.projetandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -127,6 +128,19 @@ public class DetailMovieFragment extends Fragment {
             public void onClick(View v) {
                 NavController navController= Navigation.findNavController(v);
                 navController.navigate(R.id.action_fragment_detail_movie_to_fragment_trending);
+            }
+        });
+
+        ImageButton share = (ImageButton) v.findViewById(R.id.button_share);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                String shareBody = Titre;
+                intent.setType("text/plain");
+                intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "film partagé");
+                intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(intent, "film partagé"));
             }
         });
 
