@@ -34,6 +34,7 @@ import java.util.List;
 public class DetailMovieFragment extends Fragment {
 
     private String Titre;
+    private String Description;
     private String Id;
 
     public DetailMovieFragment() {
@@ -79,6 +80,7 @@ public class DetailMovieFragment extends Fragment {
                         TextView tv3 = v.findViewById(R.id.description);
                         tv3.setText(resume);
 
+                        Description=resume;
                         Titre=titre;
                         tv.setText(titre);
                         JSONObject postjson = postObj.getJSONObject("belongs_to_collection");
@@ -136,7 +138,7 @@ public class DetailMovieFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(android.content.Intent.ACTION_SEND);
-                String shareBody = Titre;
+                String shareBody = Titre+":  "+Description;
                 intent.setType("text/plain");
                 intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "film partagé");
                 intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
